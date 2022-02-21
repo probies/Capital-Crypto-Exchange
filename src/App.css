@@ -5,6 +5,10 @@ th, td {
   padding-right: 20px;
 }
 
+th tr{
+  border-bottom:2px solid #111;
+}
+
 tbody tr:hover{
   box-shadow: #1b3a9226 0 5px 20px 0;
   border-radius: 4px;
@@ -17,19 +21,39 @@ tbody{
 
 table{
   width: 100%;
+  border-collapse: collapse;
+}
+
+th tr{
+  border-collapse: collapse;
 }
 
 th{
   background: #fff;
   font-weight:400;
   font-size:larger;
-  border-bottom:2px solid #111;
+  border:2px solid #111;
 }
 
 .App thead th{ 
     position: sticky;
-    top: 0;
+    top: 10px;
+    border:2px solid #111;
 }
+
+/* .LoadButton{
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+} */
 
 @media screen and (max-width: 600px) {
   .App{

@@ -8,23 +8,31 @@ export function ContractDataProvider({children}) {
 
     const [contract, SetContract] = useState([]);
     const [loading, setloading] = useState(true);
+    const [after, setAfter] = useState(null);
+    const [before, setBefore] = useState(null);
 
     useEffect(() => {
         fetchData(); 
     },[]);
 
     //Fetch Contract Data from API and Update the global state
-    const fetchData = async () => {
+    const fetchData = async (after) => {
 
-        const data = await FetchContract();
+        const data = await FetchContract(after);
+        console.log(data);
 
         if(data.success){
 
-            SetContract(data.result);
-            setloading(loading => !loading);
+            if( after === undefined){
+                setloading(loading => !loading);
+            }
+            const newContract = [...contract, ...data.result];
+            SetContract(newContract);
+            setAfter(data.meta.after);
+            setBefore(data.meta.before);
 
             let socket = new WebSocket('wss://production-esocket.delta.exchange');
-
+    
             const payload = {
                 "type": "subscribe",
                 "payload": {
@@ -71,8 +79,12 @@ export function ContractDataProvider({children}) {
 
     };
 
+    const LoaderFunction = () => {
+        fetchData(after)
+    }
+
     return (
-        <ContractData.Provider value={{ contract,loading }}>
+        <ContractData.Provider value={{ contract,loading, LoaderFunction ,after ,before }}>
             {children}
         </ContractData.Provider>
     );

@@ -3,14 +3,14 @@ import { ContractData } from "../context/ContractData";
 
 export default function ContractTable() {
 
-    const {contract,loading} = useContext(ContractData);
+    const { contract, loading, LoaderFunction, after, before} = useContext(ContractData);
 
     if(loading){
         return ( <h3>Loading...</h3> )
     }
     
     return (
-    <div style={{'margin':'10px'}}>
+    <div style={{'marginRight':'5%','marginLeft':'5%'}}>
 
         <table style={{'width':'100%'}}>
 
@@ -30,7 +30,7 @@ export default function ContractTable() {
                             <td style={{'textAlign':'start','fontWeight':'bold'}}>{ item.symbol }</td>
                             <td style={{'textAlign':'center'}}>{ item.description }</td>
                             <td style={{'textAlign':'end'}}>{ item.underlying_asset.symbol }</td>
-                            <td style={{'textAlign':'end','fontWeight':'bold','color':'blue'}}>
+                            <td style={{'textAlign':'end','fontWeight':'bold','color':'#19bced'}}>
                                 {(item.hasOwnProperty('mark_price'))
                                     ?
                                     item.mark_price
@@ -44,6 +44,10 @@ export default function ContractTable() {
 
         </table>
 
+        <div>
+            {(after === null && before !== null)?
+            '':<button className="LoadButton" onClick={LoaderFunction}>Load More</button>}
+        </div>
       </div>
   )
 }
