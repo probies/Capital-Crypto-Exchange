@@ -6,10 +6,9 @@ export const FetchContract = async (after) => {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                'Access-Control-Allow-Origin': '*'
-
-            },
-            
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Credentials": true
+            },            
         });
         return await response.json();
     } catch (err) {
