@@ -19,7 +19,7 @@ export function ContractDataProvider({children}) {
     const fetchData = async (after) => {
 
         const data = await FetchContract(after);
-        //console.log(data);
+        console.log(data);
 
         if(data.success){
 
