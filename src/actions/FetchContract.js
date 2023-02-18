@@ -6,8 +6,10 @@ export const FetchContract = async (after) => {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                "Access-Control-Allow-Credentials": true
+                'Access-Control-Allow-Origin': 'https://api.delta.exchange',
+                "Access-Control-Allow-Credentials": true,
+                'Access-Control-Allow-Methods':'GET,PATCH,POST,PUT,DELETE',
+
             },            
         });
         return await response.json();
