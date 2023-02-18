@@ -4,9 +4,10 @@ export const FetchContract = async (after) => {
     try {
         const response = await fetch(`https://api.delta.exchange/v2/products?page_size=15${after?`&after=${after}`:''}`, {
             method: 'GET',
-            mode:'no-cors',
             headers: {
                 Accept: 'application/json',
+                'Access-Control-Allow-Origin': '*'
+
             },
             
         });
