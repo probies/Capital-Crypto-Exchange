@@ -19,7 +19,7 @@ export function ContractDataProvider({children}) {
     const fetchData = async (after) => {
 
         const data = await FetchContract(after);
-        console.log(data);
+        //console.log(data);
 
         if(data.success){
 
@@ -47,7 +47,7 @@ export function ContractDataProvider({children}) {
 
             //Send the payload to the socket on connection
             socket.onopen = function(event) {
-                console.log(event)
+                //console.log(event)
                 socket.send(JSON.stringify(payload)) 
             }
     
