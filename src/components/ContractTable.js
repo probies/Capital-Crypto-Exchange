@@ -35,7 +35,7 @@ export default function ContractTable() {
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 flex items-center justify-center hidden sm:table-cell"
+                  className="px-6 py-3 items-center justify-center hidden sm:flex"
                 >
                   Underlying Asset
                 </th>
